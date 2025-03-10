@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактировать задачу</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; }
+        button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>Редактировать задачу</h1>
+    <form action="/edit/{{ task_id }}" method="POST">
+        <input type="text" name="task" value="{{ todo.task }}" required>
+        <select name="category">
+            <option value="Работа" {% if todo.category == "Работа" %}selected{% endif %}>Работа</option>
+            <option value="Личное" {% if todo.category == "Личное" %}selected{% endif %}>Личное</option>
+            <option value="Срочное" {% if todo.category == "Срочное" %}selected{% endif %}>Срочное</option>
+            <option value="Без категории" {% if todo.category == "Без категории" %}selected{% endif %}>Без категории</option>
+        </select>
+        <select name="priority">
+            <option value="Высокий" {% if todo.priority == "Высокий" %}selected{% endif %}>Высокий</option>
+            <option value="Средний" {% if todo.priority == "Средний" %}selected{% endif %}>Средний</option>
+            <option value="Низкий" {% if todo.priority == "Низкий" %}selected{% endif %}>Низкий</option>
+        </select>
+        <button type="submit">Сохранить</button>
+        <a href="/"><button type="button">Отмена</button></a>
+    </form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    <style>
+        .completed { text-decoration: line-through; color: gray; }
+        .high { background-color: #ffcccc; }
+        .medium { background-color: #fff3cc; }
+        .low { background-color: #e6ffe6; }
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 20px auto; }
+        ul { list-style-type: none; padding: 0; }
+        li { margin: 10px 0; padding: 5px; border: 1px solid #ddd; }
+        button { margin-left: 10px; }
+    </style>
+</head>
+<body>
+    <h1>To-Do List</h1>
+    <form action="/add" method="POST">
+        <input type="text" name="task" placeholder="Введите задачу" required>
+        <select name="category">
+            <option value="Работа">Работа</option>
+            <option value="Личное">Личное</option>
+            <option value="Срочное">Срочное</option>
+            <option value="Без категории" selected>Без категории</option>
+        </select>
+        <select name="priority">
+            <option value="Высокий">Высокий</option>
+            <option value="Средний">Средний</option>
+            <option value="Низкий" selected>Низкий</option>
+        </select>
+        <button type="submit">Добавить</button>
+    </form>
+    <ul>
+        {% for todo in todos %}
+            <li class="{% if todo.completed %}completed{% endif %} {{ todo.priority|lower }}">
+                [{{ todo.category }}] {{ todo.task|safe }} (Приоритет: {{ todo.priority }}) <!-- Баг 3: |safe позволяет выполнить HTML -->
+                <a href="/complete/{{ loop.index0 }}"><button>✓</button></a>
+                <a href="/delete/{{ loop.index0 }}"><button>✗</button></a>
+                <a href="/edit/{{ loop.index0 }}"><button>✎</button></a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
