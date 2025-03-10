@@ -40,7 +40,3 @@ def edit_todo(task_id):
             return redirect(url_for('index'))
         return render_template('edit.html', todo=todos[task_id], task_id=task_id)
     return redirect(url_for('index'))
-
-if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))  # Берем порт от Render или 5000 локально
-    app.run(host='0.0.0.0', port=port, debug=False)  # host='0.0.0.0' для внешнего доступа
