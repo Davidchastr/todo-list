@@ -15,8 +15,8 @@
 - Проверка вёрстки и стилей.
 
 ## Ссылки на отчёты
-- [Баг-репорты](bug_reports.md)
-- [Тест-кейсы](test_cases.md)
+- [Баг-репорты](docs/bug_reports.md)
+- [Тест-кейсы](docs/test_cases.md)
 
 ## Репозиторий проекта
 Исходный код проекта доступен по ссылке: [GitHub](https://github.com/Davidchastr/todo-list)
