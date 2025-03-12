@@ -18,7 +18,9 @@
 3. В адресной строке ввести `https://davidchamytodo.onrender.com/delete/999` и нажать Enter.  
 
 ### Фактический результат  
-Сервер возвращает страницу с ошибкой:  
+Сервер возвращает страницу с ошибкой 502:  Internal Server Error
+The server encountered an internal error and was unable to complete your request. Either the server is overloaded or there is an error in the application.
+
 > В логах Render появляется сообщение об исключении `IndexError: pop index out of range`.  
 
 ### Ожидаемый результат  
